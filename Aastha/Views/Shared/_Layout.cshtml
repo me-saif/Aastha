@@ -1,0 +1,134 @@
+﻿@using Microsoft.AspNetCore.Identity
+<!DOCTYPE html>
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<html lang="en">
+<head>
+    <title>Ashtha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="~/images/Aastha.svg">
+    <link href="~/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+   <style>.nav-link{
+       color: #fff !important;
+       }</style>
+</head>
+<body>
+  <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="~/images/Aastha.png" height="50px" alt="AASTHA">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Master</a>
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-action="#">Fee Collection</a>
+                                <a class="dropdown-item" asp-controller="Student" asp-action="Index">Student Master</a>
+                                <a class="dropdown-item" asp-controller="PaymentVoucher" asp-action="Index">Payment Voucher</a>
+                                <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">SMS Log</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Report</a>
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-action="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Utility</a>
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-controller="User" asp-action="Index">Users</a>
+                                <a class="dropdown-item" asp-controller="Role" asp-action="Index">Roles</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <span class="navbar-text">
+                            <ul class="navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Hello, @UserManager.GetUserName(User)!</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <form asp-area="" asp-controller="Account" asp-action="LogOut" id="logoutForm"
+                                                  method="post" asp-route-returnUrl="@Url.Action("Login", "Account")">
+                                                <a class="btn btn-link text-dark" href="javascript:document.getElementById('logoutForm').submit()"><i class="lnr lnr-cog"></i> <span>LogOut</span></a>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="ml-5">
+                                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="http://aastha.aakaarinfotech.com/Forms/frmRegister.aspx" data-a2a-title="Aastha Classes">
+                                        <a class="a2a_dd" href="https://www.addtoany.com/share"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                    </div>
+                                    <script>
+                                        var a2a_config = a2a_config || {};
+                                        a2a_config.onclick = 1;
+                                    </script>
+                                    <script async src="https://static.addtoany.com/menu/page.js"></script>
+                                </li>
+                            </ul>
+                        </span>
+                    }
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <div class="container body-content">
+        <div class="container body-content" style="margin-top:10px;">
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success col-md-3 col-lg-3 col-sm-2 col-2 text-center" style="position:fixed; right:10px">
+                    @TempData["Success"]
+                </div>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger col-md-3 col-lg-3 col-sm-2 col-2 text-center" style="position:sticky; right:10px">
+                    @TempData["Error"]
+                </div>
+            }
+            @RenderBody()
+
+        </div>
+    </div>
+    <hr>
+    <footer class="footer text-muted">
+        <div class="container text-center mt-2">
+            &copy; 2021 - Aastha - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script>
+        $(document).ready(function() {
+    // show the alert
+    setTimeout(function() {
+        $(".alert").alert('close');
+    }, 2000);
+});
+    </script>
+    <script src="~/bootstrap/js/bootstrap.js"></script>
+    <script src="~/custom/delete.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

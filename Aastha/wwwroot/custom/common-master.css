@@ -1,0 +1,81 @@
+﻿footer {
+    width: 100%;
+    display: inline-block;
+    margin: 0px;
+    height: 70px;
+    background-color: #49688e;
+}
+
+    footer .social a {
+        float: left;
+        font-size: 13px;
+        line-height: 70px;
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+    }
+
+#site-identity {
+    float: left;
+    margin-top: 7px;
+}
+
+.site-title a {
+    clear: none;
+    font-family: "Merriweather Sans",sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    text-decoration: none;
+    list-style: none;
+    margin-bottom: 6px;
+}
+
+.site-description {
+    color: #666666;
+    font-size: 14px;
+    font-style: inherit;
+    font-weight: 400;
+    letter-spacing: 1.4px;
+    margin-bottom: 0;
+}
+
+.resp_img {
+    height: 100px;
+    float: left;
+}
+
+.button {
+    background: #49688e;
+}
+
+@media (max-width: 512px) {
+    .site-title a {
+        clear: none;
+        font-family: "Merriweather Sans",sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 1;
+        text-decoration: none;
+        list-style: none;
+        margin-bottom: 6px;
+    }
+
+    .site-description {
+        color: #666666;
+        font-size: 11px;
+        font-style: inherit;
+        font-weight: 400;
+        letter-spacing: 1.4px;
+        margin-bottom: 0;
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+    #btnLogOut {
+        color: #49688e;
+        padding: 0;
+    }
+}

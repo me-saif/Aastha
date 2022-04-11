@@ -1,0 +1,18 @@
+﻿admin@gmail.com
+admin@123
+
+user@gmail.com
+user@123
+
+student@gmail.com
+student@123
+
+
+==================== GET LAST YEARS OF MONTHLY FEE COLLECTION FROM NOW ============================
+SELECT YEAR(Transaction_Date) as Year,
+         MONTH(Transaction_Date) as Month,
+         SUM(Paid_Amount) AS Amount
+    FROM FeeCollection_Master
+	WHERE Transaction_Date Between GETDATE()-365 AND GETDATE()
+GROUP BY YEAR(Transaction_Date), MONTH(Transaction_Date)
+ORDER BY YEAR(Transaction_Date), MONTH(Transaction_Date)

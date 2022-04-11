@@ -1,0 +1,58 @@
+﻿@model Aastha.Data.ViewModels.LoginViewModel
+@{
+    Layout = "";
+}
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <title>Admin Login - Ashtha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="~/css/images/Aastha.jpg">
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/custom/login.css" rel="stylesheet" />
+    <link href="~/css/admin_css/style.css" rel="stylesheet" />
+    <link href="~/custom/common-master.css" rel="stylesheet" />
+
+</head>
+<body>
+    <footer>
+        <div class="social">
+            <a href="tel:919595123456">+91-95951 23456 | </a>
+            <a href="mailto:Aastha.eduacademy@gmail.com">aastha.eduacademy@gmail.com</a>
+        </div>
+    </footer>
+
+    <div class="container-fluid">
+        <div>
+            <a href="https://myaasthaclasses.com/">
+                <img class="resp_img" src="~/images/Aastha.svg" />
+            </a>
+            <div id="site-identity">
+                <p class="site-title"><a href="https://myaasthaclasses.com/" rel="home">Aastha Coaching Classes</a></p>
+
+                <p class="site-description">Best Coaching Classes in Ulhasnagar</p>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br><br><br>
+    <div class="login-page">
+        <div class="form">
+            <form asp-action="Login" method="POST" class="login-form">
+                <h3 class="text-center">LOGIN</h3>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*<asp:Label ID="lblError" runat="server" CssClass="errorMessage"></asp:Label>*@
+                <input asp-for="Email" Class="input" placeholder="username" AutoComplete="off" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+                <input asp-for="Password" Class="input" placeholder="Password" type="password"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <button Class="button" runat="server" >LOGIN</button>
+            </form>
+        </div>
+</body>
+</html>

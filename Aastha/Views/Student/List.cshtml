@@ -1,0 +1,59 @@
+@model IEnumerable<Aastha.Data.Models.Student>
+    @* @{
+        Layout=null;
+    } *@
+
+@* <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.0/datatables.min.css" /> *@
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="~/bootstrap/css/bootstrap.css">
+
+
+<table class="table-sm table-striped table-bordered" style="width:100%" id="myTable">
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Email</th>
+            <th>Mobile No</th>
+            <th>Mobile No 2</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email_Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mobile_No)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mobile_No2)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Student_Master_Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Student_Master_Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Student_Master_Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@* <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.0/datatables.min.js"></script> *@
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+</script>

@@ -1,0 +1,15 @@
+@model Aastha.Data.ViewModels.StudentLoginViewModel
+
+<form asp-action="Login" method="POST" class="login-form">
+                <h3 class="text-center">LOGIN</h3>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*<asp:Label ID="lblError" runat="server" CssClass="errorMessage"></asp:Label>*@
+                <input asp-for="Mobile_No" Class="input" placeholder="Phone Number" AutoComplete="off" />
+                <span asp-validation-for="Mobile_No" class="text-danger"></span>
+
+                <input asp-for="Password" Class="input" placeholder="Password" type="password"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <button Class="button" runat="server" >LOGIN</button>
+            </form>
